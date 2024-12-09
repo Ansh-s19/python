@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% block content %}
+
+<div class="landing-page">
+    <div class="landing-overlay">
+        <nav class="navbarr">
+            <h1 style="margin-left: 7rem; font-size: 2.4rem; font-weight: 50px;">Gym-supps</h1>
+            <ul>
+                <li><a href="/products">Products</a></li>
+                <li><a href="/cart">Cart</a></li>
+                <li><a href="/home">aboutus</a></li>
+                <li><a href="/customer_support">Customer Support</a></li>
+            </ul>
+        </nav>
+        <h1 class="landing-text" onclick="navigateToProducts()">GymSupps</h1>
+    </div>
+</div>
+
+<script>
+    function navigateToProducts() {
+        const textElement = document.querySelector('.landing-text');
+        const overlay = document.querySelector('.landing-overlay');
+        
+        // Add the transition classes
+        textElement.classList.add('fade-out');
+        overlay.classList.add('scale-up');
+
+        // Redirect after the animation
+        setTimeout(() => {
+            window.location.href = '/products';
+        }, 1500); // Match the CSS animation duration
+    }
+</script>
+<footer class="b" style="position: fixed; bottom: 0;" >
+    <p>&copy; 2024 GymSupps | All Rights Reserved.</p>
+</footer>
+
+{% endblock %}

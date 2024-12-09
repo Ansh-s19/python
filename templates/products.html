@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="products">
+    <h1 style="text-align: center; margin-top: 100px; font-size: 2.3rem;text-shadow: 2px 2px 4px rgba(81, 78, 78, 0.824);">Our Products</h1>
+    <div class="product-grid">
+        {% for product in products %}
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='images/' + product.image) }}" height="140px" width="200px" alt="{{ product.name }}">
+            <h2>{{ product.name }}</h2>
+            <p>₹{{ product.price }}</p>  <!-- Directly show price in INR -->
+            <form method="post" action="/cart" class="add-to-cart">
+                <input type="hidden" name="product_id" value="{{ product.id }}">
+                <input type="hidden" name="action" value="add">
+                <button type="submit">Add to Cart</button>
+            </form>
+            <!-- Go to Cart Button (initially hidden) -->
+            <div class="go-to-cart" style="display: none; margin-top: 10px; text-align: center; margin: 20px;">
+                <a href="/cart" class="btn" style="padding: 10px 20px; background-color: #2196F3; color: white; text-decoration: none; margin: 10px;">Go to Cart</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<script>
+document.querySelectorAll(".add-to-cart").forEach(form => {
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        
+        // Hide all Go to Cart buttons
+        document.querySelectorAll('.go-to-cart').forEach(button => {
+            button.style.display = 'none';
+        });
+
+        // Add the item to the cart via fetch
+        fetch("/cart", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                // Show the "Go to Cart" button for the current product
+                const goToCartButton = this.closest('.product-card').querySelector('.go-to-cart');
+                goToCartButton.style.display = 'block';  // Display the button
+            }
+        })
+        .catch(error => {
+            console.error("Error adding item to cart:", error);
+        });
+    });
+});
+</script>
+<footer class="a">
+    <p>&copy; 2024 GymSupps | All Rights Reserved.</p>
+</footer>
+{% endblock %}

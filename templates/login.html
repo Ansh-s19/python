@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            background-image: url('../static/images/4722374.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 100px;
+        }
+        form {
+            padding: 20px;
+            border-radius: 4px;
+            width: 350px;
+            margin: 0 auto;
+            margin-bottom: 50px;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        .ss {
+            height: 20rem;
+        }
+        .b {
+            color: white;
+            width: 100vw;
+            height: 1.5rem;
+            position: relative;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="margin-top: 75px; font-size: 3.2rem; text-shadow:
+    1px 1px 0px #ccc,
+    2px 2px 0px #bbb,
+    3px 3px 0px #aaa,
+    4px 4px 0px #999,
+    5px 5px 0px #888,
+    6px 6px 0px #777,
+    7px 7px 0px #666,
+    8px 8px 7px rgba(0, 0, 0, 0.5);">Sign-In</h1>
+    <form class="ss" method="POST">
+        <input type="text" name="username" placeholder="Username" required><br>
+        <!-- Password Field with Validation -->
+        <input type="password" name="password" placeholder="Password" required 
+               pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+               title="Password must be at least 8 characters long and include at least one lowercase letter, one uppercase letter, one digit, and one special character (@$!%*?&)."><br>
+        <button style="margin-left: 10px;" type="submit">Login</button>
+        <a href="{{ url_for('register') }}">
+            <button type="button" style="background-color: #007bff; color: white; margin-left: 10px;">New User? Register</button>
+        </a>
+    </form>
+    <br>
+    <footer class="b" style="position: fixed; bottom: 0;">
+        <p>&copy; 2024 GymSupps | All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

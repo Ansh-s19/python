@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<section class="home">
+    <h1>Welcome to GymSupps</h1>
+    <p>At GymSupps, we believe in fueling your fitness journey with top-quality supplements designed to help you crush your goals. Whether you're building muscle, boosting endurance, or simply living a healthier lifestyle, we’ve got your back.
+
+    Our mission is simple: to provide premium gym supplements that match your determination.At GymSupps, we’re more than just a supplement store—we’re your trusted partner in fitness, health, and wellness. Founded with a passion for helping individuals achieve their fitness goals, we are dedicated to offering premium-quality supplements that enhance performance, recovery, and overall well-being.
+
+    Our mission is to empower every fitness enthusiast, from beginners to professionals, by providing high-quality products that fuel their journey toward a healthier and stronger lifestyle. From trusted classics like protein powders and creatine to advanced options like BCAAs, fish oil, and L-arginine, we cater to every fitness enthusiast’s needs.
+    <h2>Why Choose GymSupps?</h2>
+    Quality You Can Trust: Our products are sourced from reputable brands that prioritize purity, potency, and safety.
+    Wide Product Range: We’ve got everything from muscle-building essentials to overall wellness boosters.
+    Customer-Centric Approach: Your satisfaction is our top priority. Our friendly Customer Desk is always here to address your concerns and support your fitness goals.
+    Seamless Shopping Experience: Our intuitive website lets you search, order, and manage your cart with ease.
+
+    Our Vision: To empower fitness enthusiasts of all levels to unlock their potential with supplements that truly deliver results.
+
+    <h2>Join the GymSupps Community</h2>
+
+    We’re more than just a supplement store—we’re a community of fitness lovers. Share your experiences, leave reviews, and inspire others to pursue their best selves.
+
+    Explore our range, fuel your workouts, and let’s make fitness goals a reality—together!
+<h2>Our Mission</h2>
+<p> To support every individual’s fitness journey by providing:
+    
+    Premium-quality supplements: Sourced from the most trusted brands.</p>
+
+    Personalized support: A dedicated team to help guide your supplement choices.
+    An exceptional shopping experience: A user-friendly website that makes it easy to find and order the products you need.</p>
+   
+</p>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="alert">
+        {{ messages[0] }}
+    </div>
+    {% endif %}
+    {% endwith %}
+</section>
+
+<footer class="a" style="position: fixed;bottom: 0%;">
+    <p>&copy; 2024 GymSupps | All Rights Reserved.</p>
+</footer>
+{% endblock %}

@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="customer-support">
+    <h1 style="margin-top: 100px; text-align: center; font-size: 35px;">Customer Support</h1>
+    <h2 style="text-align: center;">Have a question or issue? Please let us know!</h2>
+
+    <!-- Customer Support Form -->
+    <form method="POST" action="/submit-support" id="supportForm">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" placeholder="Enter your message" rows="4" required></textarea>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</section>
+
+<!-- Success Message Modal -->
+<div id="successModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Your response has been received!</h2>
+        <p>Thank you for contacting us. We will get back to you shortly.</p>
+    </div>
+</div>
+
+<footer class="a" style="position: fixed; bottom: 0%; width: 100%; text-align: center; padding: 10px;">
+    <p>&copy; 2024 GymSupps | All Rights Reserved.</p>
+</footer>
+
+<style>
+    /* Customer Support Section */
+    .customer-support {
+        background-color: #f9f9f9;
+        padding: 20px;
+        max-width: 800px;
+        margin: 20px auto;
+        border-radius: 8px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .customer-support h1, .customer-support h2 {
+        color: #333;
+    }
+
+    .customer-support a {
+        display: inline-block;
+        margin: 10px 0;
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .customer-support a:hover {
+        text-decoration: underline;
+    }
+
+    .customer-support form {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .customer-support .form-group {
+        margin-bottom: 15px;
+    }
+
+    .customer-support .form-group label {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .customer-support .form-group input,
+    .customer-support .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1rem;
+        color: #333;
+    }
+
+    .customer-support button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+
+    .customer-support button:hover {
+        background-color: #45a049;
+    }
+
+    /* Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+        background-color: #fff;
+        margin: 15% auto;
+        padding: 20px;
+        border-radius: 8px;
+        width: 60%;
+        text-align: center;
+    }
+
+    .close {
+        color: #aaa;
+        font-size: 28px;
+        font-weight: bold;
+        position: absolute;
+        right: 20px;
+        top: 5px;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+</style>
+
+<script>
+document.getElementById("supportForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent form submission for demo purposes
+
+    // Show the modal
+    var modal = document.getElementById("successModal");
+    modal.style.display = "block";
+
+    // Reset the form fields
+    document.getElementById("supportForm").reset();
+});
+
+// Close the modal when the "x" is clicked
+document.querySelector(".close").addEventListener("click", function() {
+    var modal = document.getElementById("successModal");
+    modal.style.display = "none";
+});
+
+// Close the modal if the user clicks anywhere outside of the modal
+window.onclick = function(event) {
+    var modal = document.getElementById("successModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+};
+
+</script>
+{% endblock %}
